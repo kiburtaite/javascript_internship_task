@@ -3,8 +3,8 @@ import ResultList from './ResultList.jsx';
 
 const App = () => {
 
-const [start, setStart] = useState(1640995200);
-const [end, setEnd] = useState(1659312000);
+const [start, setStart] = useState(1656633600);
+const [end, setEnd] = useState(1659225600);
 const [company, setCompany] = useState(0);
 const [error, setError] = useState(false);
 
@@ -32,13 +32,13 @@ const search = e => {
     body: JSON.stringify({text: e.target.elements.text.value})
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => setCompany(data))
 };
 
 const reset = () => {
   setCompany(0);
-  setStart(1640995200);
-  setEnd(1659312000);
+  setStart(1656633600);
+  setEnd(1659225600);
   setError(false)
 };
 
@@ -69,7 +69,11 @@ const reset = () => {
       <button onClick={reset}>Reset</button>
       <div>
         {company!==0 ?
-        <ResultList/>
+        <ResultList
+        company={company}
+        start={start}
+        end={end}
+        />
         : null
         }
       </div>

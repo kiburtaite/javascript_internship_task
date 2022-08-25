@@ -22,8 +22,8 @@ app.post('/search', async (req, res) => {
     })
 });
 
-app.get('/candles', async (req, res) => {
-    finnhubClient.stockCandles("AAPL", "D", 1640995200, 1654038000, (error, data, response) => 
+app.post('/candles', async (req, res) => {
+    finnhubClient.stockCandles(req.body.code, "D", req.body.start, req.body.end, (error, data, response) => 
     res.json(data))
 });
 
