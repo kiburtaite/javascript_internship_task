@@ -19,13 +19,7 @@ app.post('/search', async (req, res) => {
         data.result.map(result => codes.push(result.symbol))
         finnhubClient.companyProfile2({'symbol': codes[0]}, (error, data, response) => 
         res.json(data))
-    });
-});
-
-app.post('/companies', async (req, res) => {
-    req.body.codes.codes.map(code => {
-    finnhubClient.companyProfile2({'symbol': 'ARTI.JK'}, (error, data, response) => 
-    res.json({companies: data}))})
+    })
 });
 
 app.get('/candles', async (req, res) => {
