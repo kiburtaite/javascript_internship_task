@@ -18,8 +18,12 @@ const search = e => {
     /[^a-zA-Z\s]/.test(e.target.elements.text.value)
   ){setError(true)
   } else
-  setStart(parseInt((new Date(e.target.elements.start.value).getTime() / 1000).toFixed(0)));
-  setEnd(parseInt((new Date(e.target.elements.end.value).getTime() / 1000).toFixed(0)));
+  if(e.target.elements.start.value){
+    setStart(parseInt((new Date(e.target.elements.start.value).getTime() / 1000).toFixed(0)))
+  };
+  if(e.target.elements.end.value){
+    setEnd(parseInt((new Date(e.target.elements.end.value).getTime() / 1000).toFixed(0)))
+  };
   fetch('http://localhost:5000/search', {
     method: 'POST',
     headers: {
@@ -29,6 +33,13 @@ const search = e => {
   })
   .then(res => res.json())
   .then(data => setCodes(data))
+};
+
+const reset = () => {
+  setCodes(0);
+  setStart(1640995200);
+  setEnd(1659312000);
+  setError(false)
 };
 
   return (
@@ -55,6 +66,7 @@ const search = e => {
         value="search"
         />
       </form>
+      <button onClick={reset}>Reset</button>
       <div>
         {codes!==0 ?
         <ResultList
