@@ -14,15 +14,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.post('/search', async (req, res) => {
+    let codes = [];
     finnhubClient.symbolSearch(req.body.text, (error, data, response) => {
-        const symbol = data.result.map(result => result.symbol);
-        res.json({codes: symbol})
-    })
+        data.result.map(result => codes.push(result.symbol))
+        finnhubClient.companyProfile2({'symbol': codes[0]}, (error, data, response) => 
+        res.json(data))
+    });
 });
 
-app.get('/companies', async (req, res) => {
-    finnhubClient.companyProfile2({'symbol': 'AAPL'}, (error, data, response) => 
-    res.json(data))
+app.post('/companies', async (req, res) => {
+    req.body.codes.codes.map(code => {
+    finnhubClient.companyProfile2({'symbol': 'ARTI.JK'}, (error, data, response) => 
+    res.json({companies: data}))})
 });
 
 app.get('/candles', async (req, res) => {

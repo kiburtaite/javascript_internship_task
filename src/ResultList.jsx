@@ -1,4 +1,4 @@
-const ResultList = ( {codes} ) => {
+const ResultList = () => {
 
     return (
       <div>

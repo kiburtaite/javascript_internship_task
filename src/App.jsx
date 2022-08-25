@@ -5,12 +5,12 @@ const App = () => {
 
 const [start, setStart] = useState(1640995200);
 const [end, setEnd] = useState(1659312000);
-const [codes, setCodes] = useState(0);
+const [company, setCompany] = useState(0);
 const [error, setError] = useState(false);
 
 useEffect(() => {
-  console.log(codes, start, end)
-}, [codes, start, end]);
+  console.log(company, start, end)
+}, [company, start, end]);
 
 const search = e => {
   e.preventDefault();
@@ -32,11 +32,11 @@ const search = e => {
     body: JSON.stringify({text: e.target.elements.text.value})
   })
   .then(res => res.json())
-  .then(data => setCodes(data))
+  .then(data => console.log(data))
 };
 
 const reset = () => {
-  setCodes(0);
+  setCompany(0);
   setStart(1640995200);
   setEnd(1659312000);
   setError(false)
@@ -68,9 +68,8 @@ const reset = () => {
       </form>
       <button onClick={reset}>Reset</button>
       <div>
-        {codes!==0 ?
-        <ResultList
-        codes={codes}/>
+        {company!==0 ?
+        <ResultList/>
         : null
         }
       </div>
