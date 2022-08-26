@@ -48,12 +48,14 @@ const reset = () => {
       {error && 
         <h3 className="error">Search input should only consist of letters (including space), and it shouldn't exceed 35 characters.</h3>
       }
-      <form onSubmit={search}>
+      <form className="searchForm" onSubmit={search}>
         <input
         type="text"
         name="text"
         placeholder="Search for company by name"
+        className="searchField"
         />
+        <div>
         <input
         type="date"
         name="start"
@@ -62,6 +64,8 @@ const reset = () => {
         type="date"
         name="end"
         />
+        </div>
+        <div>
         <input
         onClick={reset}
         type="button"
@@ -71,6 +75,7 @@ const reset = () => {
         type="submit"
         value="search"
         />
+        </div>
       </form>
       <div>
         {company!==0 ?
