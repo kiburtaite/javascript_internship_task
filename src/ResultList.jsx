@@ -15,7 +15,8 @@ const ResultList = ( {company, start, end, chart, setChart} ) => {
         body: JSON.stringify({
             code: company.ticker,
             start: start,
-            end: end
+            end: end,
+            company: company.name
         })
     })
     .then(res => res.json())

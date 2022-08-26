@@ -23,8 +23,10 @@ app.post('/search', async (req, res) => {
 });
 
 app.post('/candles', async (req, res) => {
-    finnhubClient.stockCandles(req.body.code, "D", req.body.start, req.body.end, (error, data, response) => 
-    res.json(data))
+    finnhubClient.stockCandles(req.body.code, "D", req.body.start, req.body.end, (error, data, response) => {
+        console.log(req.body.company, req.body.start, req.body.end);
+        res.json(data)
+    })
 });
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`))

@@ -63,11 +63,15 @@ const reset = () => {
         name="end"
         />
         <input
+        onClick={reset}
+        type="button"
+        value="reset"
+        />
+        <input
         type="submit"
         value="search"
         />
       </form>
-      <button onClick={reset}>Reset</button>
       <div>
         {company!==0 ?
         <ResultList
