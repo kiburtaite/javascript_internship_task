@@ -35,11 +35,10 @@ const ResultList = ( {company, start, end, chart, setChart} ) => {
 
     return (
       <div>
-        <div>
-          <h3>Results</h3>
+        <div className="results">
+          <h2>Results</h2>
           <button onClick={load}>{company.name}</button>
-          <h4>{company.country}</h4>
-          <h4>{company.currency}</h4>
+          <b>{company.country} ({company.currency})</b>
           <h4>{company.weburl}</h4>
         </div>
         {info!==0 && chart && 
