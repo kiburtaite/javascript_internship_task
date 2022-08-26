@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Graph from './Graph.jsx';
+import Graph from './components/Graph.jsx';
 
 const ResultList = ( {company, start, end, chart, setChart} ) => {
 
