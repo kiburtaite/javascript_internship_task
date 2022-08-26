@@ -1,28 +1,38 @@
-import { useEffect } from "react";
+import ReactApexChart from 'react-apexcharts';
 
-const Graph = ( {company, start, end} ) => {
+const Graph = ( {company, candles} ) => {
 
- useEffect(() => {
-    fetch('http://localhost:5000/candles', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
+  const series = [{
+    data: candles
+  }];
+
+  const options = {
+    chart: {
+      type: 'candlestick',
+      height: 350
     },
-    body: JSON.stringify({
-        code: company.ticker,
-        start: start,
-        end: end
-    })
-  })
-    .then(res => res.json())
-    .then(data => console.log(data))
- });
-
-    return (
+    title: {
+      text: 'CandleStick Chart',
+      align: 'left'
+    },
+    xaxis: {
+      type: 'datetime'
+    },
+    yaxis: {
+      tooltip: {
+        enabled: true
+      }
+    }
+};
+ 
+return (
       <div>
         <p>{company.ticker}</p>
-      </div>
+        <div>
+            <ReactApexChart options={options} series={series} type="candlestick" height={350} />
+        </div>
+    </div>
     );
-  }
-  
-  export default Graph
+}
+
+export default Graph
