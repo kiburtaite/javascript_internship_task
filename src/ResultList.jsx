@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Graph from './Graph.jsx';
 
-const ResultList = ( {company, start, end} ) => {
+const ResultList = ( {company, start, end, chart, setChart} ) => {
 
   const [info, setInfo] = useState(0);
   let candles = [];
@@ -20,6 +20,7 @@ const ResultList = ( {company, start, end} ) => {
     })
     .then(res => res.json())
     .then(data => setInfo(data))
+    .then(setChart(true))
     };
     
     if(info!==0){
@@ -40,7 +41,7 @@ const ResultList = ( {company, start, end} ) => {
           <h4>{company.currency}</h4>
           <h4>{company.weburl}</h4>
         </div>
-        {info!==0 &&
+        {info!==0 && chart && 
         <Graph
         company={company}
         candles={candles}

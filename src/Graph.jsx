@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const Graph = ( {company, candles} ) => {
+const Graph = ( {candles} ) => {
+
+    useEffect(() => {
+      }, [candles]);
 
   const series = [{
     data: candles

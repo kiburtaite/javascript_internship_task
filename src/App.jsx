@@ -7,13 +7,14 @@ const [start, setStart] = useState(1656633600);
 const [end, setEnd] = useState(1659225600);
 const [company, setCompany] = useState(0);
 const [error, setError] = useState(false);
+const [chart, setChart] = useState(false);
 
 useEffect(() => {
-  console.log(company, start, end)
 }, [company, start, end]);
 
 const search = e => {
   e.preventDefault();
+  setChart(false);
   if (e.target.elements.text.value.length > 35 || 
     /[^a-zA-Z\s]/.test(e.target.elements.text.value)
   ){setError(true)
@@ -73,6 +74,8 @@ const reset = () => {
         company={company}
         start={start}
         end={end}
+        chart={chart}
+        setChart={setChart}
         />
         : null
         }
