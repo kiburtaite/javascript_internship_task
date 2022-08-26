@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ResultList from './components/Graph.jsx';
+import ResultList from './ResultList.jsx';
 
 const App = () => {
 
@@ -46,7 +46,7 @@ const reset = () => {
   return (
     <div>
       {error && 
-        <h3 className="error">Search input should only consist of letters (including space), and it shouldn't exceed 35 characters.</h3>
+        <h3>Search input should only consist of letters (including space), and it shouldn't exceed 35 characters.</h3>
       }
       <form onSubmit={search}>
         <input
@@ -89,4 +89,4 @@ const reset = () => {
   );
 }
 
-export default App;
+export default App
