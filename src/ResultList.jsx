@@ -22,12 +22,14 @@ const ResultList = ( {company, start, end} ) => {
     .then(data => setInfo(data))
     };
     
-    for (let i = 0; i < info.t.length; i++){
-    candles[i] = {
-        x: new Date(info.t[i]),
-        y: [info.o[i], info.h[i], info.l[i], info.c[i]]
+    if(info!==0){
+      for (let i = 0; i < info.t.length; i++){
+        candles[i] = {
+          x: new Date(info.t[i]),
+          y: [info.o[i], info.h[i], info.l[i], info.c[i]]
+        }
     }
-    };
+  };
 
     return (
       <div>

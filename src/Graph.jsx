@@ -27,7 +27,6 @@ const Graph = ( {company, candles} ) => {
  
 return (
       <div>
-        <p>{company.ticker}</p>
         <div>
             <ReactApexChart options={options} series={series} type="candlestick" height={350} />
         </div>
