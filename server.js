@@ -17,7 +17,8 @@ app.post('/search', async (req, res) => {
     let codes = [];
     finnhubClient.symbolSearch(req.body.text, (error, data, response) => {
         data.result.map(result => codes.push(result.symbol))
-        finnhubClient.companyProfile2({'symbol': codes[0]}, (error, data, response) => 
+        finnhubClient.companyProfile2({'symbol': codes[0]}, (error, data, response) =>
+        /*Only 1 search result, since mapping thought finnhubClient.companyProfile2 didn't work for me.*/ 
         res.json(data))
     })
 });

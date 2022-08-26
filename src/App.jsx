@@ -74,6 +74,7 @@ const reset = () => {
       </form>
       <div>
         {company!==0 ?
+        /*map() method should be used here if problem with search results is fixed.*/
         <ResultList
         company={company}
         start={start}
